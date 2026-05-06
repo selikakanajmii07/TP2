@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Katalog</title>
+</head>
+<body>
+
+<h1>Data Katalog</h1>
+
+<p id="pemilik"></p>
+<p id="nim"></p>
+
+<ul id="items"></ul>
+
+<script>
+alert("JS jalan");
+
+fetch("/api/info")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("pemilik").innerText = "Nama: " + data.pemilik;
+    document.getElementById("nim").innerText = "NIM: " + data.nim;
+
+    let list = document.getElementById("items");
+    list.innerHTML = "";
+
+    data.items.forEach(item => {
+        let li = document.createElement("li");
+        li.innerText = item;
+        list.appendChild(li);
+    });
+  })
+  .catch(err => {
+    console.error("ERROR:", err);
+  });
+</script>
+
+</body>
+</html>
