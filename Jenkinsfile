@@ -8,12 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/selikakanajmii07/TP2.git'
-            }
-        }
-
         stage('Build Backend') {
             steps {
                 sh 'docker build -t $BACKEND_IMAGE ./backend'
