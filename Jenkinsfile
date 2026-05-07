@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        BACKEND_IMAGE = "selikakanajmii07/backend:latest"
-        FRONTEND_IMAGE = "selikakanajmii07/frontend:latest"
+        BACKEND_IMAGE = "selikakanajmi/backend:latest"
+        FRONTEND_IMAGE = "selikakanajmi/frontend:latest"
     }
 
     stages {
