@@ -1,38 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Katalog</title>
+    <title>Katalog Senjata</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: darkred;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+            background-color: darkred;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>Data Katalog</h1>
+<div class="container">
 
-<p id="pemilik"></p>
-<p id="nim"></p>
+    <h1>Character Game Resident Evil Fav NADZALLA</h1>
 
-<ul id="items"></ul>
+    <p id="pemilik"></p>
+    <p id="nim"></p>
+
+    <ul id="items"></ul>
+
+    <h3>Tambah Character Baru:</h3>
+
+    <input type="text" id="newItem" placeholder="Nama character...">
+    <button onclick="tambahItem()">Tambah</button>
+
+</div>
 
 <script>
-alert("JS jalan");
 
 fetch("/api/info")
   .then(res => res.json())
   .then(data => {
-    document.getElementById("pemilik").innerText = "Nama: " + data.pemilik;
-    document.getElementById("nim").innerText = "NIM: " + data.nim;
+
+    document.getElementById("pemilik").innerText =
+      "Nama: " + data.pemilik;
+
+    document.getElementById("nim").innerText =
+      "NIM: " + data.nim;
+
+    tampilkanItems(data.items);
+  })
+
+  .catch(err => {
+    console.error("ERROR:", err);
+  });
+
+function tampilkanItems(items) {
 
     let list = document.getElementById("items");
     list.innerHTML = "";
 
-    data.items.forEach(item => {
+    items.forEach(item => {
+
         let li = document.createElement("li");
         li.innerText = item;
+
         list.appendChild(li);
     });
-  })
-  .catch(err => {
-    console.error("ERROR:", err);
-  });
+}
+
+function tambahItem() {
+
+    let input = document.getElementById("newItem");
+
+    if(input.value.trim() !== "") {
+
+        let li = document.createElement("li");
+
+        li.innerText = input.value;
+
+        document.getElementById("items").appendChild(li);
+
+        input.value = "";
+    }
+}
+
 </script>
 
 </body>
