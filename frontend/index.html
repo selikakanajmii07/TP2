@@ -40,7 +40,7 @@
 
 <body>
 
-    <h1>Data Katalog</h1>
+    <h1 id="judul"></h1>
 
     <p id="pemilik"></p>
     <p id="nim"></p>
@@ -61,6 +61,11 @@
 fetch("/api/info")
   .then(res => res.json())
   .then(data => {
+
+    document.title = data.judul_katalog;
+
+    document.getElementById("judul").innerText =
+      data.judul_katalog;
 
     document.getElementById("pemilik").innerText =
       "Nama: " + data.pemilik;
