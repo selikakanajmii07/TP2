@@ -14,10 +14,10 @@ nim_owner = os.environ.get('NIM_PRAKTIKAN', '00000000')
 # BAGIAN INI BEBAS KALIAN MODIFIKASI SESUAI TEMA YANG KALIAN PILIH
 # =====================================================================
 katalog_data = {
-"judul_katalog": f"Katalog Milik {nama_owner}",
+"judul_katalog": f"List Drakor Milik {nama_owner}",
 "pemilik": nama_owner,
 "nim": nim_owner,
-"items": ["Buku", "Pulpen"]
+"items": ["Perfect Crown", "Lovely Runner"]
 }
 @app.route('/api/info', methods=['GET'])
 def get_info():
