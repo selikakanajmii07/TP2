@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Katalog Senjata</title>
+    <title>Data Katalog</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
 
         h1 {
-            color: darkred;
+            color: black;
         }
 
         p {
             font-size: 18px;
         }
 
-        ul {
-            margin-top: 20px;
-        }
-
         li {
-            margin-bottom: 10px;
-            font-size: 18px;
+            margin-bottom: 8px;
+            font-size: 17px;
         }
 
         input {
             padding: 8px;
-            width: 200px;
+            width: 220px;
         }
 
         button {
-            padding: 8px 15px;
+            padding: 8px 14px;
             cursor: pointer;
-            background-color: darkred;
-            color: white;
-            border: none;
-            border-radius: 5px;
         }
 
-        button:hover {
-            background-color: red;
+        .form-box {
+            margin-top: 25px;
         }
     </style>
 </head>
 
 <body>
-
-<div class="container">
 
     <h1>Data Katalog</h1>
 
@@ -65,12 +47,14 @@
 
     <ul id="items"></ul>
 
-    <h3>Tambah Character Baru:</h3>
+    <div class="form-box">
 
-    <input type="text" id="newItem" placeholder="Nama character...">
-    <button onclick="tambahItem()">Tambah</button>
+        <h3>Tambah Item Baru</h3>
 
-</div>
+        <input type="text" id="newItem" placeholder="Masukkan item">
+        <button onclick="tambahItem()">Tambah</button>
+
+    </div>
 
 <script>
 
