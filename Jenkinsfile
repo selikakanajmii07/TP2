@@ -10,18 +10,19 @@ pipeline {
 
         stage('Build Backend') {
             steps {
-                sh 'docker build -t $BACKEND_IMAGE ./backend'
+                bat 'docker build -t %BACKEND_IMAGE% ./backend'
             }
         }
 
         stage('Build Frontend') {
             steps {
-                sh 'docker build -t $FRONTEND_IMAGE ./frontend'
+                bat 'docker build -t %FRONTEND_IMAGE% ./frontend'
             }
         }
 
         stage('Push') {
             steps {
+
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'dockerhub-cred',
@@ -30,11 +31,11 @@ pipeline {
                     )
                 ]) {
 
-                    sh '''
-                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    bat '''
+                    docker login -u %DOCKER_USER% -p %DOCKER_PASS%
 
-                    docker push $BACKEND_IMAGE
-                    docker push $FRONTEND_IMAGE
+                    docker push %BACKEND_IMAGE%
+                    docker push %FRONTEND_IMAGE%
                     '''
                 }
             }
@@ -43,7 +44,7 @@ pipeline {
         stage('Deploy to AKS') {
             steps {
 
-                sh '''
+                bat '''
                 kubectl apply -f backend-deployment.yaml
                 kubectl apply -f backend-service.yaml
                 kubectl apply -f frontend-deployment.yaml
