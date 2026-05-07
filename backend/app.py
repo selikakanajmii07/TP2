@@ -17,7 +17,7 @@ katalog_data = {
 "judul_katalog": f"Katalog Milik {nama_owner}",
 "pemilik": nama_owner,
 "nim": nim_owner,
-"items": ["Item Default 1", "Item Default 2"]
+"items": ["Buku", "Pulpen"]
 }
 @app.route('/api/info', methods=['GET'])
 def get_info():
